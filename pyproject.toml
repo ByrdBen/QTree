@@ -2,9 +2,13 @@
 requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+packages = ["qtree"]
+
 [project]
 name = "qtree"
 version = "0.1.0"
+readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "numpy",
