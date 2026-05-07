@@ -1,0 +1,18 @@
+executable      = conda_wrapper.sh
+
+arguments       = utilities/tree.py 25 40 $(flux) $(product) $(ratio) $(folder)
+
+output          = outputs/$(flux)_full.out
+error           = errors/$(flux)_full.err
+log             = logs/$(flux)_full.log
+
+# Start at 50GB, escalate on OOM
+request_memory = ifThenElse(isUndefined(NumJobStarts) || NumJobStarts == 0, 51200, ifThenElse(NumJobStarts == 1, 81920, 102400))
+
+# Hold if memory exceeded
+on_exit_hold = (HoldReasonCode == 34 || HoldReasonSubCode == 34)
+
+# Release with bigger memory (max 3 attempts)
+periodic_release = (HoldReasonCode == 34 || HoldReasonSubCode == 34) && (NumJobStarts < 3)
+
+queue flux, product, ratio, folder from params/param_values_prod.txt

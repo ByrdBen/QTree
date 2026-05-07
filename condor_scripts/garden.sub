@@ -1,0 +1,9 @@
+executable     = conda_wrapper.sh
+
+arguments      = utilities/gardening.py
+output         = outputs/garden.out
+error          = errors/garden.err
+log            = logs/garden.log
+request_memory = 100GB
+
+queue 

@@ -1,0 +1,9 @@
+executable     = conda_wrapper.sh
+
+arguments      = utilities/crit.py
+output         = outputs/crit.out
+error          = errors/crit.err
+log            = logs/crit.log
+request_memory = 100GB
+
+queue 

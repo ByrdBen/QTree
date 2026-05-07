@@ -1,0 +1,6 @@
+/qtree/.ipynb_checkpoints
+/condor/.ipynb_checkpoints
+/__pycache__
+*.pyc
+*.pkl
+*.egg-info/
